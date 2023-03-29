@@ -13,7 +13,11 @@
 
     <button id="addJobs">Add Jobs</button>
     <hr>
-<div id="AddJob">
+<div id="AddJob" class="hide">
+    <div>
+            <label for="jobtitle">ADD Job Title</label>
+            <input type="text" name="jobtitle" />
+        </div>
      <div>
         <label for="">Company</label>
         <input type="text" name="company" id="">
@@ -30,11 +34,11 @@
     </div>
 </div>
 
-<div id="editJob">
+<div id="editJob" class="hide">
     <input type="hidden" value="" name="editJobId" />
         <div>
-            <label for="jobTitle">EDIT Job Title</label>
-            <input type="text" name="editJobTitle" />
+            <label for="jobtitle">EDIT Job Title</label>
+            <input type="text" name="editJobtitle" />
         </div>
         <div>
             <label for="company">Company</label>
