@@ -12,4 +12,5 @@ btnAddJobs.addEventListener("click", () => {
 	divAddjob.className = "hide";
 	editJob.className = "hide";
 });
-})()
+console.log(btnAddJobs,'click');
+})();
