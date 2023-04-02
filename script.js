@@ -73,4 +73,35 @@
 
 		}
 	}
+
+    //Delete the job entry
+
+    // Edit the job entry
+   async function editJobEntry(jobId){
+    divAddjob.className = "hide";
+	editJob.className = "show";
+
+    //fetch the job with the specified ID
+    const response = await fetch(`http:localhost:4000/jobs/${jobId}`,{
+          method : "GET",
+        });
+    const {result:arryOfJob}= await response.json();   
+
+    document.querySelector('input[name="editJobId"]').value = arryOfJob[0].id;
+    document.querySelector('input[name="editJobtitle"]').value = arryOfJob[0].jobtitle;
+    document.querySelector('input[name="editCompany"]').value = arryOfJob[0].company;
+    document.querySelector('input[name="editJobCategory"]').value = arryOfJob[0].jobcategory;
+    document.querySelector('input[name="editRegion"]').value = arryOfJob[0].region;
+
+
+   }
+	
+   btnSaveEdits.addEventListener("click", async() => {
+   await saveEdits()
+   })
+
+    
+
+    
+    
 })();
