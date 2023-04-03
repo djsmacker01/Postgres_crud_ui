@@ -55,7 +55,7 @@
             btnEdit = document.createElement('button');
             btnEdit.textContent ="Edit";
             btnEdit.addEventListener('click', async()=>{
-                await editJob(id)
+                await editJobs(id)
             })
 
             btnDelete = document.createElement('button');
@@ -77,7 +77,7 @@
     //Delete the job entry
 
     // Edit the job entry
-   async function editJobEntry(jobId){
+   async function editJob(jobId){
     divAddjob.className = "hide";
 	editJob.className = "show";
 
@@ -95,10 +95,42 @@
 
 
    }
-	
+	// Save the edit job
    btnSaveEdits.addEventListener("click", async() => {
    await saveEdits()
    })
+
+  async function saveEdits() {
+    let id = document.querySelector('input[name="editJobId"]').value;
+	let jobtitle = document.querySelector('input[name="editJobtitle"]').value;
+	let company = document.querySelector('input[name="editCompany"]').value;
+	let jobcategory = document.querySelector('input[name="editJobCategory"]').value;
+	let region = document.querySelector('input[name="editRegion"]').value;
+
+		let saveJob = {
+			id: parseInt(id, 10),
+			jobtitle,
+			jobcategory,
+			company,
+			region,
+		};
+
+
+		await fetch(`http://localhost:4000/jobs/${id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(saveJob), // body data type must match "Content-Type" header
+		});
+
+   }
+
+   // Cancel the edit job
+   btnCancelEdits.addEventListener("click", async() => {
+    	divAddJob.className = "hide";
+		editJob.className = "hide";
+   });
 
     
 
