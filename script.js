@@ -75,6 +75,10 @@
 	}
 
     //Delete the job entry
+  async	function deleteJob(id) {
+	  await fetch(`http://localhost:4000/jobs/${id}`);
+	  method: 'DELETE'
+	}
 
     // Edit the job entry
    async function editJobs(jobId){
@@ -122,7 +126,16 @@
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(saveJob), // body data type must match "Content-Type" header
+
 		});
+	  
+	    // update f/e directly
+        let editLI = document.querySelector(`li#job-id-${id}`);
+        let btnEdit = editLI.querySelector(`button#edit-job-id-${id}`);
+        let btnDel  = editLI.querySelector(`button#del-job-id-${id}`);
+        editLI.innerHTML = `${id} - ${jobTitle} (${company})`;
+        editLI.append(btnEdit);
+        editLI.append(btnDel);
 
    }
 
