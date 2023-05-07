@@ -77,7 +77,7 @@
     //Delete the job entry
 
     // Edit the job entry
-   async function editJob(jobId){
+   async function editJobs(jobId){
     divAddjob.className = "hide";
 	editJob.className = "show";
 
